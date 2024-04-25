@@ -1,0 +1,38 @@
+{
+  "name": "database",
+  "exports": {
+    ".": "./client/index.js",
+    "./zod": {
+      "types": "./zod/index.d.ts",
+      "import": "./dist/zod/index.js",
+      "require": "./dist/zod/index.js"
+    },
+    "./global": "./global.ts"
+  },
+  "main": "./client/index.js",
+  "scripts": {
+    "db:generate": "rimraf dist client && prisma generate && tsc && cp -r client dist/client",
+    "db:push": "prisma db push --skip-generate",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:dev:create": "prisma migrate dev --create-only",
+    "migrate:deploy": "prisma migrate deploy",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:migrate:status": "prisma migrate status --preview-feature",
+    "prisma:migrate:resolve": "prisma migrate resolve --preview-feature",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "prisma db seed"
+  },
+  "dependencies": {
+    "@prisma/client": "5.10.2",
+    "zod": "3.22.4",
+    "zod-prisma-types": "2.8.1"
+  },
+  "devDependencies": {
+    "prisma": "5.10.2",
+    "prisma-dbml-generator": "^0.10.0",
+    "prisma-json-types-generator": "3.0.3"
+  },
+  "prisma": {
+    "seed": "npx ts-node seed.ts"
+  }
+}

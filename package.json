@@ -1,0 +1,51 @@
+{
+  "name": "nest-trpc-prisma-starter",
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.5",
+  "description": "",
+  "author": "Kuizuo <hi@kuizuo.cn> (https://kuizuo.cn)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "bundle": "pnpm -F server run bundle",
+    "pretest": "dotenv -e .env.test pnpm -F database run migrate:dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "prisma:push": "pnpm -F database push",
+    "prisma:studio": "pnpm -F database studio",
+    "migrate:dev": "pnpm -F database migrate:dev",
+    "migrate:deploy": "pnpm -F database migrate:deploy"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.1.0",
+    "cross-env": "7.0.3",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.54.0",
+    "husky": "^7.0.4",
+    "rimraf": "^5.0.5",
+    "turbo": "^1.10.16",
+    "typescript": "^5.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --ignore-path ./.prettierignore --write ",
+      "eslint --cache --fix"
+    ]
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

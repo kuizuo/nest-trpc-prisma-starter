@@ -1,0 +1,50 @@
+# compiled output
+dist
+node_modules
+out
+documentation
+
+# testing
+coverage
+
+# OS
+.DS_Store
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# local env files
+.env
+
+# log files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+tmp
+public/static/
+
+# turbo
+.turbo
+
+# prisma
+prisma/client
+prisma/schemas
+prisma/zod
+prisma/dist
