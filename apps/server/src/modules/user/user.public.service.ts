@@ -29,15 +29,6 @@ export class UserPublicService {
       },
       select: {
         ...UserSelect,
-        gender: true,
-        yoId: true,
-        campus: {
-          select: {
-            id: true,
-            logo: true,
-            name: true,
-          },
-        },
       },
     }).catch(resourceNotFoundWrapper(
       new BizException(ErrorCodeEnum.UserNotFound),

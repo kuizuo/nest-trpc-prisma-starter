@@ -5,9 +5,9 @@ import { ApiSecurityAuth } from '@server/common/decorators/swagger.decorator'
 import { AuthUser } from '@server/modules/auth/decorators/auth-user.decorator'
 import { PasswordUpdateDto } from '@server/modules/user/dto/password.dto'
 
+import { UpdateProfileDto } from '../../user/dto/account.dto'
 import { UserService } from '../../user/user.service'
 import { AuthService } from '../auth.service'
-import { UpdateProfileDto } from '../../user/dto/account.dto'
 import { JwtAuthGuard } from '../guards/jwt-auth.guard'
 
 @ApiTags('Account - 账户模块')
@@ -27,9 +27,10 @@ export class AccountController {
 
   @Put('profile')
   async updateProfile(
-    @AuthUser() user: IAuthUser, @Body() dto: UpdateProfileDto,
+    @AuthUser() user: IAuthUser, @Body()
+dto: UpdateProfileDto,
   ): Promise<void> {
-    await this.userService.updateProfile(user.id, dto)
+    await this.userService.updateProfile(dto, user.id)
   }
 
   @Get('logout')

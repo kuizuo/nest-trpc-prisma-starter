@@ -1,27 +1,27 @@
 {
-    "folders": [
-      {
-        "name": "ROOT",
-        "path": "../"
-      },
-      {
-        "name": "server",
-        "path": "../apps/server"
-      },
-      {
-        "name": "admin",
-        "path": "../apps/admin"
-      },
-      {
-        "name": "web",
-        "path": "../apps/web"
-      },
-      {
-        "name": "database",
-        "path": "../packages/database"
-      },
-    ],
-    "settings": {
-      "testing.automaticallyOpenPeekView": "never"
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "../"
     },
+    {
+      "name": "server",
+      "path": "../apps/server"
+    },
+    {
+      "name": "admin",
+      "path": "../apps/admin"
+    },
+    {
+      "name": "web",
+      "path": "../apps/web"
+    },
+    {
+      "name": "database",
+      "path": "../packages/database"
+    }
+  ],
+  "settings": {
+    "testing.automaticallyOpenPeekView": "never"
   }
+}

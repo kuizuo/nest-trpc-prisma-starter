@@ -11,6 +11,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+    "postinstall": "cp .env apps/server/.env && cp .env packages/database/.env",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "bundle": "pnpm -F server run bundle",

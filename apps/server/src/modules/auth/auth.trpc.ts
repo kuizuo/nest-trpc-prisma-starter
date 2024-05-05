@@ -1,14 +1,14 @@
 import { Injectable, OnModuleInit } from '@nestjs/common'
 
+import { BizException } from '@server/common/exceptions/biz.exception'
+import { ErrorCodeEnum } from '@server/constants/error-code.constant'
 import { TRPCRouter } from '@server/shared/trpc/trpc.decorator'
 import { defineTrpcRouter } from '@server/shared/trpc/trpc.helper'
 import { TRPCService } from '@server/shared/trpc/trpc.service'
 import { z } from 'zod'
 
-import { AuthService } from './auth.service'
 import { CredentialsSchema } from './auth.dto'
-import { BizException } from '@server/common/exceptions/biz.exception'
-import { ErrorCodeEnum } from '@server/constants/error-code.constant'
+import { AuthService } from './auth.service'
 
 @TRPCRouter()
 @Injectable()
@@ -41,7 +41,7 @@ export class AuthTrpcRouter implements OnModuleInit {
           if (user.role === 'Admin')
             throw new BizException(ErrorCodeEnum.PasswordMismatch)
 
-          const jwt = await this.authService.sign(user.id, user.role, { ip, ua })
+          const jwt = await this.authService.sign(user.id, user.role)
 
           return {
             data: { authToken: jwt },

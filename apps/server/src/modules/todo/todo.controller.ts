@@ -20,10 +20,16 @@ import { TodoService } from './todo.service'
 export class TodoController {
   constructor(private readonly todoService: TodoService) { }
 
-  @Get('page')
+  @Get()
   @Policy({ model: 'Todo', action: Action.Manage })
   async list(@Query() dto: TodoPagerDto, @AuthUser() user: IAuthUser) {
-    return this.todoService.paginate(dto, user.id)
+    return this.todoService.list(dto, user.id)
+  }
+
+  @Get('page')
+  @Policy({ model: 'Todo', action: Action.Manage })
+  async page(@Query() dto: TodoPagerDto, @AuthUser() user: IAuthUser) {
+    return this.todoService.paginate(dto)
   }
 
   @Get(':id')

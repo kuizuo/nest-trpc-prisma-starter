@@ -14,7 +14,6 @@ export enum Action {
 export type PrismaSubjects = {
   User: User
   Todo: Todo
-
 }
 
 export type AppAbility = PureAbility<[Action, Subjects<PrismaSubjects>]>
